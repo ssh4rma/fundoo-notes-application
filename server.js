@@ -1,5 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
+import cors from "cors";
 import connectDb from "./configs/dbConnection.js";
 import userRoutes from "./routes/userRoutes.js";
 import noteRoutes from "./routes/noteRoutes.js";
@@ -11,6 +12,7 @@ connectDb();
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 setupSwagger(app);
 

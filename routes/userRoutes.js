@@ -6,18 +6,14 @@ import userController from "../Controllers/userController.js";
  * /api/users/register:
  *   post:
  *     summary: Register a new user
- *     tags: [Users]
+ *     tags: [User]
  *     requestBody:
  *       required: true
  *       content:
  *         application/json:
  *           schema:
  *             type: object
- *             required:
- *               - firstname
- *               - lastname
- *               - email
- *               - password
+ *             required: [firstname, lastname, email, password]
  *             properties:
  *               firstname:
  *                 type: string
@@ -29,9 +25,34 @@ import userController from "../Controllers/userController.js";
  *                 type: string
  *     responses:
  *       201:
- *         description: User created
+ *         description: User registered successfully
  *       400:
- *         description: Bad request
+ *         description: User already exists or invalid input
+ */
+
+/**
+ * @swagger
+ * /api/users/login:
+ *   post:
+ *     summary: Login a user
+ *     tags: [User]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required: [email, password]
+ *             properties:
+ *               email:
+ *                 type: string
+ *               password:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: Login successful
+ *       401:
+ *         description: Invalid credentials
  */
 
 const router = express.Router();
